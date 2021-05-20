@@ -1,0 +1,14 @@
+version: "3.2"
+
+services: 
+  jupyter:
+    image: jupyter/datascience-notebook
+    container_name: "jupyterlab"
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    working_dir: "/home/jovyan/work"
+    volumes: 
+      - ./notebook:/home/jovyan/work
+    command: jupyter lab --port 8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=""
